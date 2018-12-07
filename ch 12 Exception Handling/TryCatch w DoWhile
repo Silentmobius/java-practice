@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+public class Practice {
+
+    public static void main(String[] args) throws Exception {
+        Scanner x = new Scanner(System.in);
+        boolean loop = true;
+        do {
+            try {
+                System.out.print("Enter two integers>> ");
+                int xx = x.nextInt();
+                int yy = x.nextInt();
+                int z = quotient(xx, yy);
+                System.out.println("The quotient is: " + z);
+                loop = false;
+            } catch (ArithmeticException e) {
+                //2. calling method catches exception
+                System.out.println("Henry");
+            }
+        } while (loop == true);
+
+    }
+    private static int quotient(int number1, int number2){
+        if (number2 == 0)
+            //method throws exception to the calling method
+            throw new ArithmeticException("Divisor cannot be zero.");
+        return number1 / number2;
+    }
+}
