@@ -1,0 +1,27 @@
+public class Practice {
+
+    public static void main(String[] args) throws java.io.IOException {
+        java.io.File file = new java.io.File("scores.txt"); //Creates a text file in current directory
+        if (file.exists()) {
+            System.out.println("File exists");
+            System.exit(1);
+        }
+        java.io.PrintWriter output = new java.io.PrintWriter(file); //Creates PrintWriter object to write
+        output.print("John Smith ");
+        output.println(90);
+        output.print("Eric Jones ");
+        output.println(85);
+        output.close();
+        }
+
+        /*System.out.println("Does the file exist?>> " + file.exists());
+        System.out.println("The file has " + file.length() + " bytes");
+        System.out.println("Can it be read?>> " + file.canRead());
+        System.out.println("Can it be written?>> " + file.canWrite());
+        System.out.println("Is it a directory? " + file.isDirectory());
+        System.out.println("Is it a file? " + file.isFile());
+        System.out.println("Absolute path is " + file.getAbsolutePath());
+        System.out.println("Last modified on " + new java.util.Date(file.lastModified())); */
+
+
+    }
