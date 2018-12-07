@@ -20,7 +20,7 @@ public class Practice {
     }
     private static int quotient(int number1, int number2){
         if (number2 == 0)
-            //method throws exception to the calling method
+            //1. method throws exception to the calling method
             throw new ArithmeticException("Divisor cannot be zero.");
         return number1 / number2;
     }
