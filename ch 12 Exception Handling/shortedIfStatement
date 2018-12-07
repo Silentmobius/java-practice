@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 public class Practice {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner x = new Scanner(System.in);
         System.out.print("Enter two integers>> ");
         int xx = x.nextInt();
@@ -14,7 +14,7 @@ public class Practice {
         System.out.println("The quotient is: " + z);
 
     }
-    private static String quotient(int number1, int number2){
+    private static String quotient(int number1, int number2) throws Exception {
         return (number2 == 0) ? "number 2 is zero" : "number 2 is not zero";
 
     }
