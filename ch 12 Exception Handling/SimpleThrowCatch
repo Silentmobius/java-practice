@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Scanner;
 public class Practice {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         Scanner x = new Scanner(System.in);
         System.out.print("Enter two integers>> ");
         int xx = x.nextInt();
@@ -18,7 +18,7 @@ public class Practice {
         }
 
     }
-    private static int quotient(int number1, int number2){
+    private static int quotient(int number1, int number2) throws Exception {
         if (number2 == 0)
             //1. method throws exception to the calling method
             throw new ArithmeticException("Divisor cannot be zero.");
