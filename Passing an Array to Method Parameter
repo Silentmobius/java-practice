@@ -1,0 +1,41 @@
+/*
+Chapter 7 – Single-Dimensional Arrays
+
+Programmer:   Jimmy Lim
+
+
+Date: 10/14/2018
+
+
+Filename: jlim5_Lab7B
+
+
+Purpose: To find the minimum value by passing an array.
+
+
+*/
+import java.util.Scanner;
+public class java5_Lab7B {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\tFind the minimum value");
+        double[] numbers = new double[10];
+        int count = 10;
+        for (int x = 0; x < 10; ++x){
+            System.out.print("Enter " + count + " double numbers: ");
+            numbers[x] = input.nextDouble();
+            count --;
+        }
+        double answers = min(numbers);
+        System.out.println("The smallest element is " + answers);
+    }
+    public static double min(double[] array){
+        double min = array[0];
+        for (int x = 0; x < array.length; ++x){
+            if (array[x] < min){
+                min = array[x];
+            }
+        }
+        return min;
+    }
+}
