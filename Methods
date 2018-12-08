@@ -1,0 +1,70 @@
+/*
+Chapter 6: Methods.
+
+Programmer:   Jimmy Lim
+
+
+Date:           10/12/2018
+
+
+Filename: jlim5_TempConverter. Lab 6
+
+
+Purpose:: Demonstrate the use of methods
+
+
+*/
+import java.util.Scanner;
+public class jlim5_TempConverter {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("\t\tTemperature Converter");
+        System.out.println("------------------------------------\n");
+        int answer = 0;
+        int choice = 0;
+        do {
+            callConversions();
+            answer = input.nextInt();
+        } while (answer < 3 || answer > 6);
+
+        for (int x = 1; x < answer + 1; ++x){
+            System.out.println("\nConversion # " + x);
+
+            do {
+                callChoices();
+                choice = input.nextInt();
+            } while (choice < 1 || choice > 2);
+
+            if (choice == 1){
+                System.out.print("Enter a celsius temperature: ");
+                double celsius = input.nextDouble();
+
+                double output = celsiusToFahrenheit(celsius);
+                System.out.printf("The celsius temperature of %.1f degrees is equal to %.1f degrees fahrenheit.\n", celsius, output);
+            } else {
+                System.out.print("Enter a fahrenheit temperature: ");
+                double fahrenheit = input.nextDouble();
+
+                double output = fahrenheitToCelcius(fahrenheit);
+                System.out.printf("The fahrenheit temperature of %.1f is equal to %.1f degrees celsius", fahrenheit, output);
+            }
+        }
+    }
+    public static double celsiusToFahrenheit(double cels){
+        double answer = (cels * 9/5) + 32;
+        return answer;
+    }
+    public static double fahrenheitToCelcius(double fahr){
+        double celsius = (fahr - 32) * 5/9;
+        return celsius;
+    }
+    public static void callConversions() {
+        System.out.println("How many conversions would you like to make?\n");
+        System.out.print("Enter a number between 3 and 6: ");
+    }
+    public static void callChoices() {
+        System.out.println("\nTo convert from celcius to fahrenheit type 1.");
+        System.out.print("To convert from fahrenheit to celsius type 2: ");
+    }
+}
