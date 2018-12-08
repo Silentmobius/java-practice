@@ -1,0 +1,75 @@
+//Programmed by Jimmy Lim
+//Date: 12/8/18
+//Final Exam
+
+import java.util.Scanner;
+
+public class finalProgram {
+    public static void main(String[] args) {
+        int firstAnswer, secondAnswer;
+        boolean loop = true;
+        boolean innerLoop = true;
+        System.out.println("This is my final program\n\nInteger arithmetic tests");
+        do {
+            try {
+                firstAnswer = getNum1();
+                loop = false;
+                do {
+                    try {
+                        secondAnswer = getNum2();
+                        output(firstAnswer, secondAnswer);
+                        innerLoop = false;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                } while (innerLoop == true);
+                loop = false;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } while (loop == true);
+
+
+    }
+    public static int getNum1() throws Exception{
+        int x = 0;
+        Scanner input = new Scanner(System.in);
+            try {
+                System.out.print("Enter the first integer to test: ");
+                x = input.nextInt();
+                if (x <= 0){
+                    throw new Exception("Must be a value greater than 0 for the first number.");
+                }
+            } catch (Exception e) {
+                throw new Exception("Must be greater than 0 for the first number.");
+            }
+        return x;
+    }
+    public static int getNum2() throws Exception{
+        int x;
+        Scanner input = new Scanner(System.in);
+        try {
+            System.out.print("\nEnter the second integer to test: ");
+            x = input.nextInt();
+            if (x <= 0){
+                throw new Exception("Must be a value greater than 0 for the second number.");
+            }
+        } catch (Exception e) {
+            throw new Exception("Must be greater than 0 for the second number.");
+        }
+        return x;
+    }
+    public static void output(int x, int y){
+        int addition, subtraction, multiplication, division, modular;
+        addition = x + y;
+        subtraction = x - y;
+        multiplication = x * y;
+        division = x / y;
+        modular = x % y;
+        System.out.println(x + " + " + y + " = " + addition);
+        System.out.println(x + " - " + y + " = " + subtraction);
+        System.out.println(x + " x " + y + " = " + multiplication);
+        System.out.println(x + " / " + y + " = " + division);
+        System.out.println(x + " % " + y + " = " + modular);
+    }
+}
