@@ -1,0 +1,31 @@
+// ==================================
+// Columbus State Community College
+// CSCI 2469 - Autumn Semester 2018
+// Date: 9/9/2018
+// Assignment: Lab2_jlim5
+// Programmer: Jimmy Lim
+// ==================================
+
+import java.util.Scanner;
+public class A_Class {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double veryLight = 3.50, light = 5.50, medium = 8.50, heavy = 10.50;
+        System.out.print("Enter package weight: ");
+        double userInput = input.nextDouble();
+        double answer = 0;
+        if (userInput > 10 && userInput <= 20) {
+            answer = heavy;
+        } else if (userInput > 3 && userInput <= 10) {
+            answer = medium;
+        } else if (userInput > 1 && userInput <= 3) {
+            answer = light;
+        } else if (userInput > 0 && userInput <= 1) {
+            answer = veryLight;
+        } else {
+            System.out.println("The package cannot be shipped");
+        }
+        if (userInput <= 20)
+        System.out.println("The shipping cost is $" + answer);
+    }
+}
