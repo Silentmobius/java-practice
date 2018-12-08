@@ -1,0 +1,72 @@
+/*
+Chapter 9 - Methods
+
+Programmer:   Jimmy Lim
+
+Date:           10/23/2018
+
+Filename: CarDemo
+
+Purpose: Classes and Objects.  Instantiation.
+
+*/
+import java.util.Scanner;
+
+public class jlim5_CarDemo {
+    public static void main(String[] args) {
+        String make;
+        int year;
+        Scanner input = new Scanner(System.in);
+        System.out.println("\tDemo of the Car Class.  Programmed by Jimmy Lim");
+        System.out.print("\nEnter the make of the car: ");
+        do {
+            make = input.nextLine();
+            if (make.isEmpty()){
+                System.out.print("Input error - Please enter a car make: ");
+            }
+        } while (make.isEmpty());
+
+        System.out.print("Enter the year of the car: ");
+        year = input.nextInt();
+        do {
+            if (year < 1940 || year > 2016) {
+                System.out.print("Input error - Please enter a year between 1940 and 2016");
+                year = input.nextInt();
+            }
+        } while (year < 1940 || year > 2016);
+
+        Car tessy = new Car(year, make);
+        System.out.println("demoCar");
+        System.out.printf("\tModel Year: %10d", tessy.getInputYear());
+        System.out.printf("\n\tMake: %15s", tessy.getInputMake());
+        System.out.printf("\n\tSpeed: %12d", tessy.getSpeed());
+
+        System.out.println("\n\nSPEED UP!\n");
+        tessy.accelerate();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.accelerate();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.accelerate();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.accelerate();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.accelerate();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+
+        System.out.println("\nSLOWING DOWN!\n");
+
+        tessy.brake();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.brake();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.brake();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.brake();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+        tessy.brake();
+        System.out.println(tessy.getInputMake() + "'s speed: " + tessy.getSpeed());
+
+        System.out.println("\nWE SURVIVED! HAVE A GREAT DAY!!");
+        input.nextLine();
+    }
+}
