@@ -1,0 +1,31 @@
+// ==================================
+// Columbus State Community College
+// CSCI 2469 - Autumn Semester 2018
+// Filename: Lab 4b
+// Programmer: Jimmy Lim
+// Chapter 5 Loops
+// Date: 9/23/18
+// Purpose: More loops
+// ==================================
+
+import java.util.Scanner;
+public class Lab4b_jlim5 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Find the maximum number\n");
+        int answer, max = 0, count = 1;
+        do {
+            System.out.print("Enter an integer (0 ends the input): ");
+            answer = input.nextInt();
+            if (answer > max) {
+                max = answer;
+                count = 0;
+            }
+            if (answer == max && answer != 0) {
+                count++;
+            }
+        } while (answer != 0);
+        System.out.println("The maximum number is: " + max);
+        System.out.println("The count for the max number is: " + count);
+    }
+}
