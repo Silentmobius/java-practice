@@ -1,0 +1,44 @@
+// ==================================
+// Columbus State Community College
+// CSCI 2469 - Autumn Semester 2018
+// Date: 9/9/2018
+// Assignment: Lab2_part2_jlim5
+// Programmer: put your name here
+// ==================================
+
+import java.util.Scanner;
+public class A_Class {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the US dollar amount: ");
+        double dollarAmount = input.nextDouble();
+
+        System.out.println("\nEnter a 1 to convert to euros");
+        System.out.println("Enter a 2 to convert to pounds");
+        System.out.println("Enter a 3 to convert to rubles");
+
+        System.out.print("\nEnter your conversion choice: ");
+        int choice = input.nextInt();
+        String answer = "";
+        switch (choice) {
+            case 1:
+                double euros = dollarAmount * 0.86;
+                answer = String.valueOf(euros) + " Euros.";
+                break;
+            case 2:
+                double pounds = dollarAmount * 0.77;
+                answer = String.valueOf(pounds) + " Pounds.";
+                break;
+            case 3:
+                double rubles = dollarAmount * 69.91;
+                answer = String.valueOf(rubles) + " Rubles.";
+                break;
+            default:
+                answer = String.valueOf(dollarAmount) + " dollars.";
+        }
+        System.out.println("The dollar amount of $" + dollarAmount + " is equal to " +
+                           answer);
+        input.nextLine();
+    }
+}
