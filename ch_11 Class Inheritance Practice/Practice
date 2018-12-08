@@ -1,0 +1,41 @@
+// ==================================
+// Columbus State Community College
+// CSCI 2469 - Autumn Semester 2018
+// Assignment: Practice
+// Programmer: put your name here
+// ==================================
+public class Practice {
+    public static void main(String[] args) {
+        Circle[] anArray = new Circle[10];
+        for (int x = 0; x < anArray.length; ++x){
+            anArray[x] = new Circle();
+        }
+        System.out.println(Circle.getNumberOfObjects());
+    }
+}
+class Circle {
+    private double radius = 1;
+    private static int numberOfObjects = 0;
+    Circle() {
+        numberOfObjects++;
+    };
+
+    Circle(double newRadius){
+        radius = newRadius;
+        numberOfObjects++;
+    }
+    //Getter method
+    public double getRadius() {
+        return radius;
+    }
+    //Setter method
+    public void setRadius(double newRadius) {
+        radius = (newRadius >= 0) ? newRadius : 0;
+    }
+    public static int getNumberOfObjects() {
+        return numberOfObjects;
+    }
+    public double getArea() {
+        return radius * radius * Math.PI;
+    }
+}
