@@ -1,0 +1,44 @@
+// ==================================
+// Columbus State Community College
+// CSCI 2469 - Autumn Semester 2018
+// File: jlim5_AscendingOrder
+// Programmer: Jimmy Lim
+// Date: 9/17/18
+// Purpose: utilize string methods like .compareTo()
+// ==================================
+
+import java.util.Scanner;
+public class Ascender {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the first city: ");
+        String firstCity = input.nextLine();
+        System.out.print("\nEnter the second city: ");
+        String secondCity = input.nextLine();
+        System.out.print("\nEnter the third city: ");
+        String thirdCity = input.nextLine();
+        String message = "";
+        if (firstCity.compareToIgnoreCase(secondCity) < 0 && firstCity.compareToIgnoreCase(thirdCity) < 0) {
+            if (secondCity.compareToIgnoreCase(thirdCity) < 0) {
+                message += firstCity + " , " + secondCity + " , " + thirdCity;
+            } else {
+                message += firstCity + " , " + thirdCity + " , " + secondCity;
+            }
+        } else if (secondCity.compareToIgnoreCase(firstCity) < 0 && secondCity.compareToIgnoreCase(thirdCity) < 0){
+            if (firstCity.compareToIgnoreCase(thirdCity) < 0) {
+                message += secondCity + " , " + firstCity + " , " + thirdCity;
+            } else {
+                message += secondCity + " , " + thirdCity + " , " + firstCity;
+            }
+        } else if (thirdCity.compareToIgnoreCase(firstCity) < 0 && thirdCity.compareToIgnoreCase(secondCity) < 0) {
+            if (firstCity.compareToIgnoreCase(secondCity) < 0) {
+                message += thirdCity + " , " + firstCity + " , " + secondCity;
+            } else {
+                message += thirdCity + " , " + secondCity + " , " + firstCity;
+            }
+        } else {
+            System.out.println("Cannot be ordered");
+        }
+        System.out.println("\nThe three cities in alphabetical order are: " + message);
+    }
+}
