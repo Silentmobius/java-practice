@@ -1,0 +1,82 @@
+//Programmed by Jimmy Lim
+//Date: 12/8/18
+
+import java.util.Scanner;
+public class Practice {
+
+    private static final double PI = 3.14;
+    public static void main(String[] s) {
+        //Declaring variables
+        int multiplier;
+        double correct;
+        boolean loop = true;
+        //Opening messages
+        System.out.println("\t\tWelcome to the Multiplication Quiz");
+        System.out.println("");
+
+        //Calling the user-defined methods
+        do {
+            try {
+                multiplier = getNumber();
+                correct = takeQuiz(multiplier);
+                System.out.println("\t\tYou got " + correct + " correct!");
+                loop = false;
+            } catch (Exception e) {
+                System.out.println("Error - Enter an integer.");
+            }
+        } while (loop == true);
+    }
+    public static int getNumber() throws Exception
+    {
+        //Declaring variables
+
+        Scanner input = new Scanner(System.in);
+        int multiplier;
+        //Get a value from user
+        try {
+            System.out.print("Enter the multiplication table you wish to practice:  ");
+            multiplier = input.nextInt();
+            System.out.println();
+        } catch (Exception e) {
+            throw e;
+        }
+        //Return a value to main
+        return multiplier;
+
+    }
+    public static int takeQuiz(int multiplier)
+    {
+        //Delcaring variablaes
+
+        int answer;
+        int count = 0;
+        int correct = 0;
+
+        Scanner input = new Scanner(System.in);
+
+
+        while (count <= 12)
+        {
+
+            //Display question and get answer
+            System.out.println( "What is "+count + " times " + multiplier +"?" );
+
+            answer =input.nextInt();
+
+            if (answer == count * multiplier)
+            {
+                System.out.println("\tCorrect!");
+                correct = correct + 1;
+            }
+
+            else
+            {
+                System.out.println("\tIncorrect");
+            }
+
+            count = count + 1;
+        }
+
+        return correct;
+    }
+}
