@@ -1,0 +1,40 @@
+// ==================================
+// Columbus State Community College
+// CSCI 2469 - Autumn Semester 2018
+// Filename: jlim5_Lab4a
+// Chapter 5 (Loops)
+// Programmer: Jimmy Lim
+// Date: 9/23/2018
+// Purpose: For loops and while loops
+// ==================================
+
+import java.util.Scanner;
+public class Lab4a_jlim5 {
+    public static void main(String[] args) {
+        int enteredValues, zeroes = 0, positives = 0, negatives = 0;
+        Scanner input = new Scanner(System.in);
+            System.out.println("Positive and Negative Numbers");
+            System.out.println("Enter the total amount of integers to be entered:");
+            System.out.print("Must be between 5 and 10:");
+            int repetitions = input.nextInt();
+            while ((repetitions < 5) || (repetitions > 10)) {
+                System.out.println("Enter the total amount of integers to be entered:");
+                System.out.print("Must be between 5 and 10:");
+                repetitions = input.nextInt();
+            }
+            for (int j = 1; j <= repetitions; ++j) {
+                System.out.print("Enter number " + j + ":");
+                enteredValues = input.nextInt();
+                if (enteredValues == 0) {
+                    zeroes++;
+                } else if (enteredValues > 0) {
+                    positives++;
+                } else if (enteredValues < 0) {
+                    negatives++;
+                }
+            }
+            System.out.println("Total zeroes: " + zeroes);
+            System.out.println("Total positives integers: " + positives);
+            System.out.println("Total negative integers: " + negatives);
+    }
+}
