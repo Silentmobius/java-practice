@@ -1,0 +1,97 @@
+/*
+Chapter 12. Exception Handling
+
+Programmer:   Jimmy Lim
+
+
+Date:     11/8/2018
+
+
+Filename: TravelCommission
+
+
+Purpose: To demonstrate Exception Handling via the javax.swing component.
+
+
+*/
+
+import javax.swing.JOptionPane;
+import java.text.*;
+import java.util.Locale;
+
+
+public class TravelCommission {
+    public static void main(String[] args) {
+        double dollars = getSales();
+        int empCode = getCode();
+        double answer = getComm(dollars, empCode);
+        output(dollars, answer);
+            }
+    private static double getSales() {
+        String x = "";
+        int cancel = 0;
+        double y = 0;
+        boolean loop = true;
+        do {
+            try {
+                x = JOptionPane.showInputDialog("Enter your dollar amount:");
+                if (x == null || cancel == JOptionPane.CANCEL_OPTION) {
+                    System.exit(0);
+                }
+                y = Double.parseDouble(x);
+                if (y >= 0){
+                    loop = false;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error - Enter a number greater than 0.", "Error", JOptionPane.WARNING_MESSAGE);
+                    loop = true;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Enter a valid number", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        } while (loop == true);
+        return y;
+    }
+    private static int getCode() {
+        boolean loop = true;
+        int x = 0;
+        do {
+            try {
+                x = Integer.parseInt(JOptionPane.showInputDialog("Enter the commission code: " +
+                                                                   "\n\n 1) Telephone sales \n" +
+                                                                   "2) In-Store Sales \n" +
+                                                                   "3) Outside Sales\n"));
+                if (x == 1 || x == 2 || x == 3){
+                    loop = false;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a 1, 2, or 3", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception e){
+                if (x == 0){
+                    System.exit(0);
+                }
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+
+            }
+        } while (loop == true);
+        return x;
+    }
+    private static double getComm(double dollars, int code){
+        final double TELEPHONE_COMMISSION = .10;
+        final double STORE_COMMISSION = .14;
+        final double OUTSIDE_COMMISSION = .18;
+        double rate = 0;
+        switch (code) {
+            case 1: rate = TELEPHONE_COMMISSION; break;
+            case 2: rate = STORE_COMMISSION; break;
+            case 3: rate = OUTSIDE_COMMISSION; break;
+            default: break;
+        }
+        return dollars * rate;
+    }
+    private static void output(double dollars, double answer){
+
+        Locale locale = new Locale("en", "US");
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+        JOptionPane.showMessageDialog(null, "Your commission on sales of " + formatter.format(dollars) + " is " + formatter.format(answer), "Commission Totals", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
