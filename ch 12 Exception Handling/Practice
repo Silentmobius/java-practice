@@ -1,0 +1,85 @@
+/*
+Chapter 11
+
+Programmer:   Jimmy Lim
+
+
+Date: 11/21/18
+
+
+Filename: Candleline.java
+
+
+Purpose: Demonstrate exception handling
+
+
+*/
+import java.util.Scanner;
+
+public class Candleline {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double candleCost, shippingCost;
+        int shippingType;
+        do {
+            candleCost = getCandleCost();
+        } while (candleCost == 0);
+        do {
+            shippingType = getShippingType();
+        } while (shippingType == 0);
+        shippingCost = getShippingCost(candleCost, shippingType);
+        System.out.println();
+        output(candleCost, shippingCost);
+        input.nextLine();
+    }
+    private static double getCandleCost(){
+        Scanner input = new Scanner(System.in);
+            double answer = 0;
+            System.out.print("Please enter a number: ");
+                try {
+                    answer = input.nextInt();
+                } catch (Exception e) {
+                    System.out.println("Must be a number greater than 0.");
+                    return 0;
+                }
+            return answer;
+    }
+    private static int getShippingType(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the type of shipping: ");
+        System.out.println("1) Priority (Overnight)\n2) Express (2 business days) \n3) Standard (3 to 7 business days)");
+        System.out.print("Enter type number: ");
+        int type = 0;
+        try {
+            type = input.nextInt();
+            if (type > 3 || type < 0) {
+                throw new Exception();
+            }
+        } catch (Exception e){
+            System.out.println("Error, enter a 1, 2, or 3");
+            return 0;
+        }
+        return type;
+    }
+    private static double getShippingCost(double cost, int type){
+        double shippingCost = 0;
+
+        switch (type){
+            case 1:
+                shippingCost = 16.95; break;
+            case 2:
+                shippingCost = 13.95; break;
+            case 3:
+                shippingCost = 7.95; break;
+        }
+        if (cost >= 100){
+            shippingCost = 0;
+        }
+        return shippingCost;
+    }
+    private static void output(double candleCost, double shippingCost){
+        double total = candleCost + shippingCost;
+        System.out.printf("The candle cost of $%.2f plus shipping costs of $%.2f equals $%.2f", candleCost, shippingCost, total);
+    }
+}
+
