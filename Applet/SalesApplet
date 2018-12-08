@@ -1,0 +1,100 @@
+/*
+	Chapter :	Sales Calculator (Midterm 2)
+	Programmer: Jimmy Lim
+	Date: 10/28/2018
+	Filename:	SalesApplet.java
+*/
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class SalesApplet extends Applet implements ActionListener {
+    //Create components for applet
+    double item1, item2, item3, itemTotal, tax = 0.06, total, taxAmt;
+
+    Label titleLabel = new Label(" Sales Tax Calculator                                                                               ");
+
+    Label itemOneLabel = new Label("Item 1: ");
+
+    TextField itemOneField = new TextField(40);
+
+    Label itemTwoLabel = new Label("Item 2: ");
+
+    TextField itemTwoField = new TextField(40);
+
+    Label itemThreeLabel = new Label("Item 3:");
+
+    TextField itemThreeField = new TextField(40);
+
+    Label outputLabel = new Label("                                                                                                             ");
+    Button calcButton = new Button("Calculate");
+    Button clearButton = new Button("Clear");
+
+    public void init()
+    {
+        add(titleLabel);
+        add(itemOneLabel);
+        add(itemOneField);
+        add(itemTwoLabel);
+        add(itemTwoField);
+        add(itemThreeLabel);
+        add(itemThreeField);
+        add(outputLabel);
+        add(calcButton);
+        add(clearButton);
+        calcButton.addActionListener(this);
+        clearButton.addActionListener(this);
+
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+        item1 = getItem1(itemOneField);
+        item2 = getItem2(itemTwoField);
+        item3 = getItem3(itemThreeField);
+
+        itemTotal = item1 + item2 + item3;
+        taxAmt = itemTotal * tax;
+        total = itemTotal + taxAmt;
+        Label finalLabel = new Label(String.format("Sales = $%.2f ", itemTotal) + String.format("Tax = $%.2f", taxAmt) + String.format(" Total = $%.2f", total));
+        Label errorLabel = new Label("Value must be between 1 and 10.");
+        if ((item1 > 10 || item1 < 1) || (item2 > 10 || item2 < 1)|| (item3 > 10|| item3 < 1)){
+            setOutput(errorLabel);
+        } else {
+            setOutput(finalLabel);
+        }
+        if (clearButton.hasFocus()){
+            itemOneField.setText("");
+            itemTwoField.setText("");
+            itemThreeField.setText("");
+        }
+    }
+    public double getItem1(TextField x){
+
+        Double item1 = Double.parseDouble(x.getText());
+        return item1;
+    }
+
+    public double getItem2 (TextField x){
+        Double item2 = Double.parseDouble(x.getText());
+        return item2;
+    }
+    public double getItem3 (TextField x){
+        Double item3 = Double.parseDouble(x.getText());
+        return item3;
+    }
+    public void setOutput(Label x)
+    {
+        outputLabel.setText(x.getText());
+
+    }
+
+    public void paint(Graphics g) {
+        setBackground(Color.cyan);
+        setForeground(Color.red);
+    }
+
+}
