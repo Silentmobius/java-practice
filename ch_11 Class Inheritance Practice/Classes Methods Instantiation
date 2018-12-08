@@ -1,0 +1,105 @@
+/*
+Chapter 10 Object Oriented Thinking
+
+Programmer:   Jimmy Lim
+
+
+Date:                 10/30/2018
+
+
+Filename: BankAccountDemo.java
+
+
+Purpose: Using class, data fields, methods, and attributes.
+
+
+*/
+import java.util.Scanner;
+import java.text.DecimalFormat;
+import java.util.Date;
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        int acctID;
+        double acctBalance, annIntRate, withAmt, depAmt;
+        Scanner input = new Scanner(System.in);
+        DecimalFormat twoDigits = new DecimalFormat("$###,###.00");
+        DecimalFormat percent = new DecimalFormat("##.00%");
+
+        System.out.println("   Bank Account Balance");
+        System.out.println();
+
+        System.out.print("Enter your account id: ");
+        acctID = input.nextInt();
+        System.out.println();
+
+        System.out.print("Enter your current Balance: ");
+        acctBalance = input.nextDouble();
+        System.out.println();
+
+        System.out.print("Enter your annual interest rate: ");
+        annIntRate = input.nextDouble();
+        System.out.println();
+
+        System.out.print("Enter any withdrawals: ");
+        withAmt = input.nextDouble();
+        System.out.println();
+
+        System.out.print("Enter any deposits: ");
+        depAmt = input.nextDouble();
+        System.out.println();
+
+
+        CheckAcct account = new CheckAcct(acctID, acctBalance);
+        CheckAcct.setAnnualInterestRate(annIntRate);
+
+        account.withdraw(withAmt);
+        account.deposit(depAmt);
+        System.out.println("Balance for account # " +  account.getId() + " is " +twoDigits.format(account.getBalance()));
+
+        System.out.println("Monthly interest is " + twoDigits.format(account.getMonthlyInterest()));
+
+        System.out.println("This account was created at " +
+                           account.getDateCreated());
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Annual interest rate is " + percent.format(CheckAcct.getAnnualInterestRate()));
+    }
+
+
+}
+class CheckAcct{
+    private int id;
+    private double balance;
+    private Date dateCreated = new Date();
+    private static double annualInterestRate;
+    public CheckAcct(int acctID, double acctBal){
+        balance = acctBal;
+        id = acctID;
+    }
+    Date getDateCreated() {
+        return dateCreated;
+    }
+    public static double getAnnualInterestRate() {
+        return annualInterestRate;
+    }
+    static void setAnnualInterestRate(double x) {
+        annualInterestRate = x;
+    }
+    double getBalance() {
+        return balance;
+    }
+    int getId() {
+        return id;
+    }
+    public void withdraw(double x){
+        balance -= x;
+    }
+    public void deposit(double x){
+        balance += x;
+    }
+    double getMonthlyInterest() {
+        return annualInterestRate / 12 * balance;
+    }
+
+}
