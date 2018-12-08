@@ -1,0 +1,78 @@
+public class Practice {
+
+    public static void main(String[] args) {
+        Circle x = new Circle();
+        Circle y = new Circle(5.2);
+        Circle z = new Circle(3.3,"red",false);
+        x.printCircle();
+        y.printCircle();
+        z.printCircle();
+        System.out.println(x.getDateCreated());
+    }
+}
+class GeometricObject {
+    private String color = "white";
+    private boolean filled;
+    private java.util.Date dateCreated;
+    public GeometricObject(){
+        System.out.println("A geometric object is born!");
+        dateCreated = new java.util.Date();
+    }
+    public GeometricObject(String color, boolean filled){
+        dateCreated = new java.util.Date();
+        this.color = color;
+        this.filled = filled;
+    }
+    public String getColor(){
+        return color;
+    }
+    public void setColor(String color){
+        this.color = color;
+    }
+    public void setFilled(boolean filled){
+        this.filled = filled;
+    }
+    public boolean isFilled(){
+        return filled;
+    }
+    public java.util.Date getDateCreated() {
+        return dateCreated;
+    }
+    public String toString(){
+        return "created on " + dateCreated + "\ncolor: " + color + " and filled: " + filled;
+    }
+}
+class Circle extends GeometricObject{
+    private double radius;
+    public Circle(){
+        System.out.println("A Circle is born!");
+    }
+    public Circle(double radius){
+        this.radius = radius;
+    }
+    public Circle(double radius, String color, boolean filled){
+        this.radius = radius;
+        setColor(color);
+        setFilled(filled);
+    }
+    public double getRadius(){
+        return radius;
+    }
+    public void setRadius(double radius){
+        this.radius = radius;
+    }
+    public double getArea(){
+        return Math.PI * radius * radius ;
+    }
+    public double getDiameter(){
+        return 2 * radius;
+    }
+    public double getPerimeter(){
+        return 2 * radius * Math.PI;
+    }
+    public void printCircle(){
+        System.out.println("The circles radius is " + getRadius() + " \nPerimeter is " + getPerimeter() + "\n Area is " + getArea()
+        + " \n Diameter is " + getDiameter());
+    }
+
+}
