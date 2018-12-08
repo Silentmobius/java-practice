@@ -1,0 +1,88 @@
+/*
+Chapter 9 - Methods
+
+Programmer:   Jimmy Lim
+
+Date:           10/23/2018
+
+Filename: Car
+
+Purpose: Classes and Objects.  Instantiation.
+
+*/
+
+public class jlim5_Car {
+    public static void main(String[] args) {
+        Car tessy = new Car(2018, "Tessy Mo");
+        CallSpeed(tessy);
+        System.out.println("Accelerating!");
+        tessy.accelerate();;
+        CallSpeed(tessy);
+        System.out.println("Accelerating!");
+        tessy.accelerate();;
+        CallSpeed(tessy);
+        System.out.println("Accelerating!");
+        tessy.accelerate();;
+        CallSpeed(tessy);
+        System.out.println("Accelerating!");
+        tessy.accelerate();;
+        CallSpeed(tessy);
+        System.out.println("Accelerating!");
+        tessy.accelerate();;
+        CallSpeed(tessy);
+        System.out.println("Oh no a TREE!!");
+        PrintSlowDown();
+        tessy.brake();
+        CallSpeed(tessy);
+        PrintSlowDown();
+        tessy.brake();
+        CallSpeed(tessy);
+        PrintSlowDown();
+        tessy.brake();
+        CallSpeed(tessy);
+        PrintSlowDown();
+        tessy.brake();
+        CallSpeed(tessy);
+        PrintSlowDown();
+        tessy.brake();
+        CallSpeed(tessy);
+
+
+    }
+    static void CallSpeed(Car x) {
+        System.out.println("Speed is " + x.getSpeed());
+    }
+    static void PrintSlowDown() {
+        System.out.println("SLOWING DOWN");
+    }
+}
+class Car {
+    int yearModel;
+    String make;
+    int speed;
+    Car(int newYear, String newMake){
+        yearModel = newYear;
+        make = newMake;
+        speed = 0;
+    }
+    int getInputYear() {
+        return yearModel;
+    }
+    String getInputMake() {
+        return make;
+    }
+    int getSpeed() {
+        return speed;
+    }
+    void accelerate() {
+        speed += 5;
+    }
+    void brake() {
+        speed -= 5;
+    }
+
+
+
+
+
+}
