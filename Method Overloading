@@ -1,0 +1,59 @@
+/*
+Chapter 7 – Single-Dimensional Arrays
+
+Programmer:   Jimmy Lim
+
+
+Date: 10/14/2018
+
+
+Filename: jlim5_Lab7A
+
+
+Purpose: To utilize method overloading and find the averages.
+
+
+*/
+import java.util.Scanner;
+public class jlim5_Lab7A {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\tAverage Arrays\n");
+        int[] list1 = new int[10];
+        int count = 10;
+        for (int x = 0; x < 10; ++x) {
+            System.out.print("Enter " + count + " integer values: ");
+            list1[x] = input.nextInt();
+            count --;
+        }
+        int average = average(list1);
+        System.out.println("The average of the ten integers is " + average);
+
+        double[] list2 = new double[10];
+        count = 10;
+        for (int x = 0; x < 10; ++x) {
+            System.out.print("Enter " + count + " double values: ");
+            list2[x] = input.nextDouble();
+            count --;
+        }
+        double average2 = average(list2);
+        System.out.printf("The average of the ten doubles is %.2f", average2);
+
+    }
+    public static int average(int[] array){
+        int sum = 0;
+        for (int x = 0; x < array.length; ++x){
+            sum += array[x];
+        }
+        int average = (sum / array.length);
+        return average;
+    }
+    public static double average(double[] array){
+        double sum = 0;
+        for (int x = 0; x < array.length; ++x){
+            sum += array[x];
+        }
+        double average = (sum / array.length);
+        return average;
+    }
+}
